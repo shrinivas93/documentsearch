@@ -14,7 +14,8 @@ import com.shrinivas.documentsearch.repository.IndexRepository;
 @Component
 public class DocumentSearch {
 
-	private static final Logger LOGGER = LogManager.getLogger(DocumentSearch.class);
+	private static final Logger LOGGER = LogManager
+			.getLogger(DocumentSearch.class);
 
 	@Autowired
 	private IndexRepository indexRepository;
@@ -23,14 +24,15 @@ public class DocumentSearch {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			System.out.print("Enter word : ");
-			String word = scanner.nextLine();
+			String word = scanner.nextLine().toLowerCase();
 			Index index = indexRepository.findOne(word);
 			if (index != null) {
 				for (String file : index.getFiles()) {
 					System.out.println("\t" + file);
 				}
 			} else {
-				System.out.println("No documents found for the word '" + word + "'");
+				System.out.println("No documents found for the word '" + word
+						+ "'");
 			}
 		}
 	}
