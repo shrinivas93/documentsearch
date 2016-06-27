@@ -1,9 +1,9 @@
 package com.shrinivas.documentsearch.document;
 
-import java.util.Set;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.shrinivas.documentsearch.pojo.DbStatistic;
 
 @Document(collection = "index")
 public class Index {
@@ -11,15 +11,16 @@ public class Index {
 	@Id
 	private String word;
 
-	private Set<String> files;
+	private DbStatistic dbStatistic;
 
 	public Index() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public Index(String word, Set<String> files) {
+	public Index(String word, DbStatistic dbStatistic) {
 		super();
 		this.word = word;
-		this.files = files;
+		this.dbStatistic = dbStatistic;
 	}
 
 	public String getWord() {
@@ -30,17 +31,17 @@ public class Index {
 		this.word = word;
 	}
 
-	public Set<String> getFiles() {
-		return files;
+	public DbStatistic getDbStatistic() {
+		return dbStatistic;
 	}
 
-	public void setFiles(Set<String> files) {
-		this.files = files;
+	public void setDbStatistic(DbStatistic dbStatistic) {
+		this.dbStatistic = dbStatistic;
 	}
 
 	@Override
 	public String toString() {
-		return "Index [word=" + word + ", files=" + files + "]";
+		return "Index [word=" + word + ", dbStatistic=" + dbStatistic + "]";
 	}
 
 }
